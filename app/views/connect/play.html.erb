@@ -8,6 +8,24 @@
 
 </div>
 
+<table id="tallyboard">
+  <thead>
+    <tr>
+      <td id="playerCellA" style="color:rgb(248, 93, 93)">
+        ${playerA }
+      </td>
+      <td id="playerCellB" style="color:blue"> 
+        ${playerB }
+      </td>
+    <tr/>
+  </thead>
+  <tr>
+    <td id="turnCell" style="background:rgb(248, 93, 93)" colspan="2">
+      <h1 style="color:white">TURN</h1>
+    </td>
+  <tr/>
+</table>
+
 <table id = "board">
   <tr class = "0">
       <% (@board.cells). each do |cell| %>
