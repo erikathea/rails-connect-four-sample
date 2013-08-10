@@ -1,56 +1,64 @@
-<header>
-  <h1>Connect Four Sample App</h1>
-</header>
+<div class="pure-g-r">
 
-<div>
-  
-  <p>Connect Four (also known as Captain's Mistress, Four Up, Plot Four, Find Four, Fourplay, Four in a Row and Four in a Line) is a two-player game in which the players first choose a color and then take turns dropping colored discs from the top into a seven-column, six-row vertically suspended grid. <a href="http://en.wikipedia.org/wiki/Connect_Four" title="Connect Four Wiki">Wiki</a> </p>  
+  <div class = "sidebar pure-u">
+    <header class="header">
+      <h1>Connect Four</h1> 
+      <h3>Sample App</h3>
+      <h5>Connect Four (also known as Captain's Mistress, Four Up, Plot Four, Find Four, Fourplay, Four in a Row and Four in a Line) is a two-player game in which the players first choose a color and then take turns dropping colored discs from the top into a seven-column, six-row vertically suspended grid. <a href="http://en.wikipedia.org/wiki/Connect_Four" title="Connect Four Wiki">Wiki</a> </h5> 
+    </header>
 
-</div>
 
-<table id="tallyboard">
-  <thead>
-    <tr>
-      <td id="playerCellA" style="color:rgb(248, 93, 93)">
-        ${playerA }
-      </td>
-      <td id="playerCellB" style="color:blue"> 
-        ${playerB }
-      </td>
-    <tr/>
-  </thead>
-  <tr>
-    <td id="turnCell" style="background:rgb(248, 93, 93)" colspan="2">
-      <h1 style="color:white">TURN</h1>
-    </td>
-  <tr/>
-</table>
+  </div>
 
-<table id = "board">
-  <tr class = "0">
-      <% (@board.cells). each do |cell| %>
+  <div class="pure-u-1" id="layout">
+    <table id="tallyboard" class="pure-table">
+      <thead>
+        <tr>
+          <td id="playerCellA">
+            Player A
+          </td>
+          <td id="playerCellB"> 
+            Player B
+          </td>
+        <tr/>
+      </thead>
+      <tr>
+        <td id="turnCell" colspan="2">
+          <h1>TURN</h1>
+        </td>
+      <tr/>
+    </table>
+
+    <hr/>
+
+    <table id = "board" class="pure-table pure-table-bordered">
+      <tr class = "0">
+        <% (@board.cells). each do |cell| %>
         
-        <td class = "<%= cell.y %>" > 
-          <button 
-            class = "cellButton buttons" 
-            id = "<%= cell.x %>_<%= cell.y %>" 
-            onclick = "play(<%= cell.x %>, <%= cell.y %>)">
-              <%= cell.x %> <%= cell.y %>
+          <td class = "<%= cell.y %>" > 
+            <button 
+              class = "cellButton" 
+              id = "<%= cell.x %>_<%= cell.y %>" 
+              onclick = "play(<%= cell.x %>, <%= cell.y %>)">
+              o
               <input type = "hidden" 
                 id = "played_<%= cell.x %>_<%= cell.y %>" 
                 value = "<%= cell.played %>" /> 
-          </button>
-        </td>
+            </button>
+          </td>
 
-        <% if cell.y == (@board.cols - 1)  %>
-          </tr>
-          <% if cell.x != (@board.rows - 1)  %>
-            <tr class = "<%= cell.x + 1 %>">
+          <% if cell.y == (@board.cols - 1)  %>
+            </tr>
+            <% if cell.x != (@board.rows - 1)  %>
+              <tr class = "<%= cell.x + 1 %>">
+            <% end %>
           <% end %>
         <% end %>
+    </table>
 
-      <% end %>
+    <input type="hidden" id="clicks" value="0"/>
+    <hr/>
+    
+  </div>
 
-</table>
-
-<input type="hidden" id="clicks" value="0"/>
+</div>
